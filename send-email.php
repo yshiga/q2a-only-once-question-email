@@ -5,9 +5,6 @@ if (!defined('QA_VERSION')) {
 }
 
 $LIMIT = (int)qa_opt('q2a-only-once-question-day');	// 閾値：日数
-// for local test START
-//$LIMIT = 16;
-// for local test END
 if (!is_numeric($LIMIT) or $LIMIT == '0') {
 	return;
 }
@@ -25,7 +22,6 @@ $title = "plugin07 title";
 			'^sitename' => qa_opt('site_title')
 		)
 	);
-//$body = "plugin07 body.";
 	sendEmail($title, $body, $handle, $email);
 }
 
@@ -38,12 +34,6 @@ function sendEmail($title, $body, $toname, $toemail){
 	$params['toname'] = $toname;
 	$params['toemail'] = $toemail;
 	$params['html'] = false;
-/*************
-print "sendEmail\n";
-foreach($params as $key => $val) {
-print "key[".$key."] val[".$val."]\n";
-}
-*************/
 	qa_send_email($params);
 
 	//$params['toemail'] = 'yuichi.shiga@gmail.com';

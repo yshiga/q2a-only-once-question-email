@@ -5,7 +5,7 @@ class q2a_only_once_question_admin {
 	}
 	function option_default($option) {
 		switch($option) {
-			case 'q2a-only_once_question-day':
+			case 'q2a-only-once-question-day':
 				return 10; 
 			default:
 				return null;
@@ -19,9 +19,9 @@ class q2a_only_once_question_admin {
 	function admin_form(&$qa_content){                       
 		// process the admin form if admin hit Save-Changes-button
 		$ok = null;
-		if (qa_clicked('q2a-only_once_question-save')) {
-			qa_opt('q2a-only_once_question-body', qa_post_text('q2a-only_once_question-body'));
-			qa_opt('q2a-only_once_question-day', (int)qa_post_text('q2a-only_once_question-day'));
+		if (qa_clicked('q2a-only-once-question-save')) {
+			qa_opt('q2a-only-once-question-body', qa_post_text('q2a-only-once-question-body'));
+			qa_opt('q2a-only-once-question-day', (int)qa_post_text('q2a-only-once-question-day'));
 			$ok = qa_lang('admin/options_saved');
 		}
 		
@@ -31,15 +31,15 @@ class q2a_only_once_question_admin {
 		$fields[] = array(
 			'type' => 'textarea',
 			'label' => '本文',
-			'tags' => 'name="q2a-only_once_question-body"',
-			'value' => qa_opt('q2a-only_once_question-body'),
+			'tags' => 'name="q2a-only-once-question-body"',
+			'value' => qa_opt('q2a-only-once-question-body'),
 		);
 
 		$fields[] = array(
 			'type' => 'number',
 			'label' => 'mail day',
-			'tags' => 'name="q2a-only_once_question-day"',
-			'value' => qa_opt('q2a-only_once_question-day'),
+			'tags' => 'name="q2a-only-once-question-day"',
+			'value' => qa_opt('q2a-only-once-question-day'),
 		);
 		
 		return array(     
@@ -48,7 +48,7 @@ class q2a_only_once_question_admin {
 			'buttons' => array(
 				array(
 					'label' => qa_lang_html('main/save_button'),
-					'tags' => 'name="q2a-only_once_question-save"',
+					'tags' => 'name="q2a-only-once-question-save"',
 				),
 			),
 		);
