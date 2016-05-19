@@ -5,6 +5,7 @@ if (!defined('QA_VERSION')) {
 }
 
 $LIMIT = (int)qa_opt('q2a-only-once-question-day');	// 閾値：日数
+echo $LIMIT;
 if (!is_numeric($LIMIT) or $LIMIT == '0') {
 	return;
 }
@@ -14,12 +15,13 @@ foreach($posts as $post){
 	$user = getUserInfo($post['userid']);
 	$handle = $user[0]['handle'];
 	$email = $user[0]['email'];
-$title = "plugin07 title";
+	$title = "その後ニホンミツバチの質問はありませんか?";
 	$bodyTemplate = qa_opt('q2a-only-once-question-body');
 	$body = strtr($bodyTemplate, 
 		array(
 			'^username' => $handle,
-			'^sitename' => qa_opt('site_title')
+			'^sitename' => qa_opt('site_title'),
+			'^siteurl' => qa_opt('site_url')
 		)
 	);
 	sendEmail($title, $body, $handle, $email);
@@ -34,10 +36,10 @@ function sendEmail($title, $body, $toname, $toemail){
 	$params['toname'] = $toname;
 	$params['toemail'] = $toemail;
 	$params['html'] = false;
-	qa_send_email($params);
+	//qa_send_email($params);
+echo $params['toemail'];
 
-	//$params['toemail'] = 'yuichi.shiga@gmail.com';
-	$params['toemail'] = 'ryuta_takeyama@nexyzbb.ne.jp';
+	$params['toemail'] = 'yuichi.shiga@gmail.com';
 	qa_send_email($params);
 }
 function getUserInfo($userid) {

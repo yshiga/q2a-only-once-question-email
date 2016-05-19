@@ -32,6 +32,7 @@ function getXdaysAgoOnlyOnceQuestionPosts($days) {
 	$sql .= " from qa_posts where type='Q' group by userid) t0";
 	$sql .= " where postcount=1 and userid is not null";
 	$sql .= " and dfday >= " . $days_from . " and dfday < " . $days_to;
+echo $sql;
 	$result = qa_db_query_sub($sql); 
 	return qa_db_read_all_assoc($result);
 }
